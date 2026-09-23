@@ -9,9 +9,9 @@ def hello_world():
     return render_template("main.html", name="박지호", number="21010856")
 
 
-@app.route("/about")
+@app.route("/profile")
 def about_page():
-    return "<h1>소개</h1>"
+    return render_template("hobbies.html", hobbies=["운동", "독서", "게임"])
 
 @app.route("/test/<text>")
 def route_sample(text):

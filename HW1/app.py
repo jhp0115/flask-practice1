@@ -13,9 +13,9 @@ def hello_world():
 def about_page():
     return render_template("hobbies.html", hobbies=["운동", "독서", "게임"])
 
-@app.route("/test/<text>")
-def route_sample(text):
-    return f"<h1>{text}</h1>"
+@app.route("/greet/<name>")
+def route_sample(name):
+    return render_template("greet.html", name=name)
 
 @app.route("/age/<num>")
 def age_any(num):

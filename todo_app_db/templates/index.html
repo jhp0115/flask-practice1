@@ -1,0 +1,27 @@
+
+
+{% extends "base.html" %}
+{% block title %}Todo List - Todo App{% endblock %}
+{% block content %}
+<h2>Add New Todo</h2>
+<form method="post">
+ <input type="text" name="todo" required>
+ <button type="submit">Add Todo</button>
+</form>
+<h2>Todo List</h2>
+
+
+<ul>
+  {% for todo in todos %}
+  <li> <a href="{{ url_for('toggle', id=todo.id) }}">완료</a>
+    {% if todo.done %} 
+      <span class="done">{{ todo.text }}</span> 
+    {% else %} 
+    {{ todo.text }}
+    {% endif %}
+    <a href="{{ url_for('delete', id=todo.id) }}">Delete</a>
+  </li> 
+      {% endfor %}
+    </ul>
+
+{% endblock %}

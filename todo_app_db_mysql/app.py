@@ -3,7 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
+# 전 : 4장에서 쓰던 줄
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db' 
+# 후 : 오늘 바꾸는 줄. 왼쪽은 그대로이고 따옴표 안만 바뀐다
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://flask_user:password@localhost/flask_todo_db'
 
 db = SQLAlchemy(app)
 

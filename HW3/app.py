@@ -45,8 +45,12 @@ def delete(id):
 def edit(id): 
     todo = db.get_or_404(Todo, id) 
     if request.method == 'POST': 
-        pass
-             # text 와 note 를 고치고 commit 한 뒤 목록으로return render_template('edit.html', todo=todo)
+        todo.text = request.form['todo']
+        todo.note = request.form['note']
+
+        db.session.commit()
+        return redirect(url_for('index'))
+    return render_template('edit.html', todo=todo)
 
 
 with app.app_context():

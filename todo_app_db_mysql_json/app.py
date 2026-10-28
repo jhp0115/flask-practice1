@@ -177,15 +177,15 @@ class TodoItem(Resource):
         return "", 204
 
 
-    def get_or_abort(id):
-        """없는 번호면 404를 JSON으로 돌려준다."""
-        todo = db.session.get(Todo, id)
+def get_or_abort(id):
+    """없는 번호면 404를 JSON으로 돌려준다."""
+    todo = db.session.get(Todo, id)
 
-        if todo is None:
-            # abort에 넘긴 것이 그대로 JSON의 message가 됩니다.
-            ns.abort(404, f"{id}번 할 일이 없습니다")
+    if todo is None:
+        # abort에 넘긴 것이 그대로 JSON의 message가 됩니다.
+        ns.abort(404, f"{id}번 할 일이 없습니다")
 
-        return todo
+    return todo
 
 
 app.register_blueprint(api_bp)
